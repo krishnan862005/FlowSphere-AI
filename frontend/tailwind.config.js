@@ -1,0 +1,155 @@
+import { fontFamily } from 'tailwindcss/defaultTheme';
+const config = {
+    darkMode: ['class'],
+    content: [
+        './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+        './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['var(--font-inter)', ...fontFamily.sans],
+                mono: ['var(--font-jetbrains-mono)', ...fontFamily.mono],
+            },
+            colors: {
+                primary: {
+                    DEFAULT: 'rgb(var(--primary-rgb) / <alpha-value>)',
+                    50: 'rgb(var(--primary-rgb) / 0.05)',
+                    100: 'rgb(var(--primary-rgb) / 0.1)',
+                    200: 'rgb(var(--primary-rgb) / 0.2)',
+                    300: 'rgb(var(--primary-rgb) / 0.4)',
+                    400: 'rgb(var(--primary-rgb) / 0.6)',
+                    500: 'rgb(var(--primary-rgb) / <alpha-value>)',
+                    600: 'rgb(var(--primary-rgb) / 0.8)',
+                    700: 'rgb(var(--primary-rgb) / 0.9)',
+                    800: 'rgb(var(--primary-rgb) / 0.95)',
+                    900: 'rgb(var(--primary-rgb) / 1)',
+                },
+                secondary: {
+                    DEFAULT: 'rgb(var(--secondary-rgb) / <alpha-value>)',
+                    50: 'rgb(var(--secondary-rgb) / 0.05)',
+                    100: 'rgb(var(--secondary-rgb) / 0.1)',
+                    200: 'rgb(var(--secondary-rgb) / 0.2)',
+                    300: 'rgb(var(--secondary-rgb) / 0.4)',
+                    400: 'rgb(var(--secondary-rgb) / 0.6)',
+                    500: 'rgb(var(--secondary-rgb) / <alpha-value>)',
+                    600: 'rgb(var(--secondary-rgb) / 0.8)',
+                    700: 'rgb(var(--secondary-rgb) / 0.9)',
+                    800: 'rgb(var(--secondary-rgb) / 0.95)',
+                    900: 'rgb(var(--secondary-rgb) / 1)',
+                },
+                accent: {
+                    DEFAULT: 'rgb(var(--accent-rgb) / <alpha-value>)',
+                    50: 'rgb(var(--accent-rgb) / 0.05)',
+                    100: 'rgb(var(--accent-rgb) / 0.1)',
+                    200: 'rgb(var(--accent-rgb) / 0.2)',
+                    300: 'rgb(var(--accent-rgb) / 0.4)',
+                    400: 'rgb(var(--accent-rgb) / 0.6)',
+                    500: 'rgb(var(--accent-rgb) / <alpha-value>)',
+                    600: 'rgb(var(--accent-rgb) / 0.8)',
+                    700: 'rgb(var(--accent-rgb) / 0.9)',
+                    800: 'rgb(var(--accent-rgb) / 0.95)',
+                    900: 'rgb(var(--accent-rgb) / 1)',
+                },
+                background: {
+                    DEFAULT: 'rgb(var(--background-rgb) / <alpha-value>)',
+                    secondary: 'rgb(var(--background-secondary-rgb) / <alpha-value>)',
+                    tertiary: 'rgb(var(--background-secondary-rgb) / 0.8)',
+                },
+                card: {
+                    DEFAULT: 'rgb(var(--card-rgb) / <alpha-value>)',
+                    hover: 'rgb(var(--card-hover-rgb) / <alpha-value>)',
+                    border: 'rgba(var(--foreground-rgb), var(--border-opacity))',
+                },
+                surface: {
+                    1: 'rgb(var(--surface-1-rgb) / <alpha-value>)',
+                    2: 'rgb(var(--surface-2-rgb) / <alpha-value>)',
+                    3: 'rgb(var(--surface-3-rgb) / <alpha-value>)',
+                },
+                muted: {
+                    DEFAULT: '#6B7280',
+                    foreground: '#9CA3AF',
+                },
+                destructive: {
+                    DEFAULT: '#FF4D6D',
+                    foreground: '#FFFFFF',
+                },
+                success: {
+                    DEFAULT: '#22C55E',
+                    foreground: '#FFFFFF',
+                },
+                warning: {
+                    DEFAULT: '#F59E0B',
+                    foreground: '#000000',
+                },
+                border: 'rgba(var(--foreground-rgb), var(--border-opacity))',
+                input: 'rgba(var(--foreground-rgb), var(--input-opacity))',
+                ring: 'rgb(var(--primary-rgb) / <alpha-value>)',
+                foreground: 'rgb(var(--foreground-rgb) / <alpha-value>)',
+            },
+            borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
+                xl: 'calc(var(--radius) + 4px)',
+                '2xl': 'calc(var(--radius) + 8px)',
+                '3xl': 'calc(var(--radius) + 16px)',
+            },
+            backgroundImage: {
+                'gradient-primary': 'linear-gradient(135deg, rgb(var(--primary-rgb)) 0%, rgb(var(--secondary-rgb)) 100%)',
+                'gradient-accent': 'linear-gradient(135deg, rgb(var(--primary-rgb)) 0%, rgb(var(--accent-rgb)) 100%)',
+                'gradient-dark': 'linear-gradient(180deg, rgb(var(--background-rgb)) 0%, rgb(var(--background-secondary-rgb)) 100%)',
+                'gradient-card': 'linear-gradient(145deg, rgba(var(--primary-rgb) / 0.1) 0%, rgba(var(--secondary-rgb) / 0.05) 100%)',
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                'gradient-mesh': `
+          radial-gradient(at 27% 37%, rgba(var(--primary-rgb) / 0.15) 0px, transparent 50%),
+          radial-gradient(at 97% 21%, rgba(var(--secondary-rgb) / 0.15) 0px, transparent 50%),
+          radial-gradient(at 52% 99%, rgba(var(--accent-rgb) / 0.1) 0px, transparent 50%),
+          radial-gradient(at 10% 29%, rgba(var(--primary-rgb) / 0.1) 0px, transparent 50%)
+        `,
+            },
+            boxShadow: {
+                'glow-primary': '0 0 20px rgba(var(--primary-rgb) / 0.4)',
+                'glow-accent': '0 0 20px rgba(var(--accent-rgb) / 0.4)',
+                'glow-sm': '0 0 10px rgba(var(--primary-rgb) / 0.3)',
+                'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
+                'card-hover': '0 8px 40px rgba(0, 0, 0, 0.6)',
+                'inner-glow': 'inset 0 0 20px rgba(var(--primary-rgb) / 0.1)',
+            },
+            animation: {
+                'fade-in': 'fadeIn 0.5s ease forwards',
+                'fade-up': 'fadeUp 0.5s ease forwards',
+                'slide-in-left': 'slideInLeft 0.3s ease forwards',
+                'slide-in-right': 'slideInRight 0.3s ease forwards',
+                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'spin-slow': 'spin 8s linear infinite',
+                'gradient-shift': 'gradientShift 6s ease infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+                'counter': 'counter 2s ease-out forwards',
+            },
+            keyframes: {
+                fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
+                fadeUp: { from: { opacity: '0', transform: 'translateY(20px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+                slideInLeft: { from: { opacity: '0', transform: 'translateX(-20px)' }, to: { opacity: '1', transform: 'translateX(0)' } },
+                slideInRight: { from: { opacity: '0', transform: 'translateX(20px)' }, to: { opacity: '1', transform: 'translateX(0)' } },
+                gradientShift: {
+                    '0%, 100%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+                glowPulse: {
+                    '0%, 100%': { boxShadow: '0 0 20px rgba(var(--primary-rgb) / 0.4)' },
+                    '50%': { boxShadow: '0 0 40px rgba(var(--primary-rgb) / 0.8)' },
+                },
+            },
+        },
+    },
+    plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+};
+export default config;
+//# sourceMappingURL=tailwind.config.js.map
