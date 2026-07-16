@@ -1,10 +1,10 @@
 {
   "name": "FlowSphere AI",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20-bookworm",
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@9.12.0 --activate && pnpm install --frozen-lockfile --ignore-scripts && pnpm db:generate",
+  "containerEnv": {
+    "CI": "true"
   },
-  "postCreateCommand": "pnpm install && pnpm db:generate",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -29,5 +29,10 @@
     "6379": {
       "label": "Redis"
     }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
   }
 }
