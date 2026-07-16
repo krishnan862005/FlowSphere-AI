@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Bell, Search, Settings, Moon, Sun, Command, Palette } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 import { useAuth } from '@/contexts/AuthContext';
 import { useSocket } from '@/contexts/SocketContext';
@@ -12,6 +13,8 @@ export function TopNav() {
   const { user } = useAuth();
   const { connected } = useSocket();
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const isBuilderPage = pathname?.includes('/builder');
   const [notifOpen, setNotifOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -22,7 +25,7 @@ export function TopNav() {
   }, []);
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-white/5 bg-surface-1/50 backdrop-blur-sm px-6 flex-shrink-0">
+    <header className="flex h-16 items-center justify-between border-b border-white/5 bg-surface-1/50 backdrop-blur-sm px-6 flex-shrink-0 z-40 relative">
       {/* Left — Breadcrumb / Title */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1.5">
@@ -32,17 +35,19 @@ export function TopNav() {
       </div>
 
       {/* Center — Search */}
-      <button
-        onClick={() => setSearchOpen(true)}
-        className="hidden md:flex items-center gap-3 rounded-xl border border-white/8 bg-white/5 px-4 py-2 text-sm text-muted-foreground hover:bg-white/10 hover:text-white transition-all duration-200 w-72"
-      >
-        <Search className="h-4 w-4" />
-        <span>Search workflows...</span>
-        <div className="ml-auto flex items-center gap-1">
-          <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-xs">⌘</kbd>
-          <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-xs">K</kbd>
-        </div>
-      </button>
+      {!isBuilderPage && (
+        <button
+          onClick={() => setSearchOpen(true)}
+          className="hidden md:flex items-center gap-3 rounded-xl border border-white/8 bg-white/5 px-4 py-2 text-sm text-muted-foreground hover:bg-white/10 hover:text-white transition-all duration-200 w-72"
+        >
+          <Search className="h-4 w-4" />
+          <span>Search workflows...</span>
+          <div className="ml-auto flex items-center gap-1">
+            <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-xs">⌘</kbd>
+            <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-xs">K</kbd>
+          </div>
+        </button>
+      )}
 
       {/* Right — Actions */}
       <div className="flex items-center gap-2">

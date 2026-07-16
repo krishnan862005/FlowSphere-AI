@@ -227,6 +227,39 @@ function WorkflowBuilderInner() {
     [setNodes, pushHistory, edges]
   );
 
+  // Handle adding nodes directly from click in Node Library
+  const onAddNode = useCallback(
+    (nodeType: string) => {
+      const def = NODE_DEFINITIONS[nodeType];
+      if (!def) return;
+
+      const position = {
+        x: 250 + (nodes.length * 30) % 150,
+        y: 200 + (nodes.length * 30) % 150,
+      };
+
+      const newNode: Node = {
+        id: `${nodeType}-${Date.now()}`,
+        type: 'flowNode',
+        position,
+        data: {
+          label: def.label,
+          category: def.category,
+          nodeType,
+          config: {},
+        },
+      };
+
+      setNodes((nds) => {
+        const updated = [...nds, newNode];
+        setIsDirty(true);
+        pushHistory({ nodes: updated, edges });
+        return updated;
+      });
+    },
+    [nodes.length, edges, setNodes, pushHistory]
+  );
+
   // Build with AI handler
   const onBuildWithAI = useCallback(() => {
     setAiOpen(true);
@@ -256,7 +289,7 @@ function WorkflowBuilderInner() {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="w-72 flex-shrink-0 border-r border-white/5 bg-surface-1 overflow-y-auto z-10"
           >
-            <NodePanel />
+            <NodePanel onAddNode={onAddNode} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -298,7 +331,7 @@ function WorkflowBuilderInner() {
           />
 
           {/* Top toolbar inside canvas */}
-          <Panel position="top-center">
+          <Panel position="top-center" style={{ marginTop: '24px' }}>
             <BuilderToolbar
               workflowId={workflowId}
               isDirty={isDirty}

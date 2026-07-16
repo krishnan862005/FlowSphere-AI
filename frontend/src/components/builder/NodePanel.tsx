@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 import { NODE_DEFINITIONS, NODE_CATEGORIES } from '@/lib/nodeDefinitions';
 
-function NodeCard({ nodeType }: { nodeType: string }) {
+function NodeCard({ nodeType, onAddNode }: { nodeType: string; onAddNode?: (nodeType: string) => void }) {
   const def = NODE_DEFINITIONS[nodeType];
   if (!def) return null;
 
@@ -25,7 +25,8 @@ function NodeCard({ nodeType }: { nodeType: string }) {
     <div
       draggable
       onDragStart={onDragStart}
-      className="flex items-center gap-3 rounded-xl p-2.5 cursor-grab active:cursor-grabbing hover:bg-white/5 border border-transparent hover:border-white/8 transition-all duration-150 group"
+      onClick={() => onAddNode?.(nodeType)}
+      className="flex items-center gap-3 rounded-xl p-2.5 cursor-pointer active:cursor-grabbing hover:bg-white/5 border border-transparent hover:border-white/8 transition-all duration-150 group"
     >
       <div
         className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-sm"
@@ -41,7 +42,7 @@ function NodeCard({ nodeType }: { nodeType: string }) {
   );
 }
 
-function CategorySection({ name, types }: { name: string; types: string[] }) {
+function CategorySection({ name, types, onAddNode }: { name: string; types: string[]; onAddNode?: (nodeType: string) => void }) {
   const [open, setOpen] = useState(true);
 
   return (
@@ -63,7 +64,7 @@ function CategorySection({ name, types }: { name: string; types: string[] }) {
             className="overflow-hidden"
           >
             <div className="space-y-0.5">
-              {types.map((type) => <NodeCard key={type} nodeType={type} />)}
+              {types.map((type) => <NodeCard key={type} nodeType={type} onAddNode={onAddNode} />)}
             </div>
           </motion.div>
         )}
@@ -72,7 +73,11 @@ function CategorySection({ name, types }: { name: string; types: string[] }) {
   );
 }
 
-export function NodePanel() {
+interface NodePanelProps {
+  onAddNode?: (nodeType: string) => void;
+}
+
+export function NodePanel({ onAddNode }: NodePanelProps) {
   const [search, setSearch] = useState('');
 
   const filtered = search.trim()
@@ -106,12 +111,12 @@ export function NodePanel() {
             {filtered.length === 0 ? (
               <p className="text-xs text-muted-foreground text-center py-6">No nodes found</p>
             ) : (
-              filtered.map((type) => <NodeCard key={type} nodeType={type} />)
+              filtered.map((type) => <NodeCard key={type} nodeType={type} onAddNode={onAddNode} />)
             )}
           </div>
         ) : (
           Object.entries(NODE_CATEGORIES).map(([name, types]) => (
-            <CategorySection key={name} name={name} types={types} />
+            <CategorySection key={name} name={name} types={types} onAddNode={onAddNode} />
           ))
         )}
       </div>
@@ -119,7 +124,7 @@ export function NodePanel() {
       {/* Tip */}
       <div className="px-4 py-3 border-t border-white/5">
         <p className="text-[10px] text-muted-foreground text-center">
-          Drag nodes onto the canvas to add them
+          Click nodes or drag them onto the canvas to add
         </p>
       </div>
     </div>
