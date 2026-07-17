@@ -1,8 +1,8 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { memo } from 'react';
 import { Handle, Position, type NodeProps } from 'reactflow';
-import { motion } from 'framer-motion';
 
 import { NODE_DEFINITIONS } from '@/lib/nodeDefinitions';
 

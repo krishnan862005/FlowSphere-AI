@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { Zap, Twitter, Github, Linkedin, Youtube } from 'lucide-react';
+import Link from 'next/link';
 
 const LINKS = {
   Product: ['Features', 'Pricing', 'Changelog', 'Roadmap', 'Status'],

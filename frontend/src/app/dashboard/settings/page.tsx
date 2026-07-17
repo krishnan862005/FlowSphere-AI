@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { Settings, User, Bell, Shield, Trash2, Save } from 'lucide-react';
+import { useState } from 'react';
+
 import { useAuth } from '@/contexts/AuthContext';
 
 export default function SettingsPage() {

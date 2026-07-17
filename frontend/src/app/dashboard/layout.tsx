@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { Sidebar } from '@/components/dashboard/Sidebar';
 import { TopNav } from '@/components/dashboard/TopNav';
 

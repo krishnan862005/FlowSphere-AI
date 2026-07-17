@@ -1,12 +1,13 @@
-import { Router } from 'express';
-import { z } from 'zod';
 import { hash } from 'bcryptjs';
+import { Router } from 'express';
+import type { RequestHandler } from 'express';
+import { z } from 'zod';
 
 import { prisma } from '../lib/prisma';
-import { AppError } from '../middleware/errorHandler';
 import { authenticate } from '../middleware/authenticate';
 import type { AuthRequest } from '../middleware/authenticate';
-import type { RequestHandler } from 'express';
+import { AppError } from '../middleware/errorHandler';
+
 
 const router = Router();
 router.use(authenticate as RequestHandler);

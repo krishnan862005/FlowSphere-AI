@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { LandingWorkflowShowcase } from '@/components/landing/LandingWorkflowShowcase';
+
 import { LandingFooter } from '@/components/landing/LandingFooter';
 import { LandingNav } from '@/components/landing/LandingNav';
+import { LandingWorkflowShowcase } from '@/components/landing/LandingWorkflowShowcase';
 
 export const metadata: Metadata = {
   title: 'Showcase — FlowSphere AI',

@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import type { Node, Edge } from 'reactflow';
+import { create } from 'zustand';
 
 interface HistoryEntry {
   nodes: Node[];

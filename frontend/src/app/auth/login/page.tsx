@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Eye, EyeOff, Loader2, Github, Chrome } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -91,7 +91,7 @@ export default function LoginPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-2">Welcome back</h1>
         <p className="text-muted-foreground">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <Link href="/auth/register" className="text-primary hover:underline font-medium">
             Sign up free
           </Link>

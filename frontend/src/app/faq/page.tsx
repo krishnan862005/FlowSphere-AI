@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { LandingFAQ } from '@/components/landing/LandingFAQ';
 import { LandingFooter } from '@/components/landing/LandingFooter';
 import { LandingNav } from '@/components/landing/LandingNav';

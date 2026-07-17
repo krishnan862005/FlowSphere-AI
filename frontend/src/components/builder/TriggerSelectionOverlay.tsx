@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
@@ -17,6 +16,7 @@ import {
   Zap,
   X,
 } from 'lucide-react';
+import { useState, useCallback } from 'react';
 
 interface TriggerOption {
   id: string;

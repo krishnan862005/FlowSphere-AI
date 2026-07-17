@@ -1,11 +1,12 @@
 import { Router } from 'express';
+import type { RequestHandler } from 'express';
 import { z } from 'zod';
-import { authenticate } from '../middleware/authenticate';
+
 import { generateApiKey } from '../lib/encryption';
 import { prisma } from '../lib/prisma';
-import { AppError } from '../middleware/errorHandler';
+import { authenticate } from '../middleware/authenticate';
 import type { AuthRequest } from '../middleware/authenticate';
-import type { RequestHandler } from 'express';
+import { AppError } from '../middleware/errorHandler';
 
 const router = Router();
 router.use(authenticate as RequestHandler);

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Bell, Search, Settings, Moon, Sun, Command, Palette } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Bell, Search, Settings, Moon, Sun, Command, Palette } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { useState, useEffect } from 'react';
 
 import { useAuth } from '@/contexts/AuthContext';
 import { useSocket } from '@/contexts/SocketContext';

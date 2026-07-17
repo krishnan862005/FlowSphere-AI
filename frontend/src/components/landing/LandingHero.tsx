@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Link from 'next/link';
 import { ArrowRight, Play, Star, Zap, GitBranch, Cpu, BarChart3 } from 'lucide-react';
+import Link from 'next/link';
 import { useRef } from 'react';
 
 const STATS = [

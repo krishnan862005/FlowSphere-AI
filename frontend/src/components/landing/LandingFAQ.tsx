@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useRef, useState } from 'react';
 
 const FAQS = [
   {

@@ -1,11 +1,11 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
 import {
   Zap, GitBranch, Brain, Clock, Shield, BarChart3,
   Layers, Terminal, Globe, RefreshCw, Bell, Users,
 } from 'lucide-react';
+import { useRef } from 'react';
 
 // Feature colors rotate through: Aurora teal → Electric purple → Lava orange → Accent blue
 const FEATURES = [

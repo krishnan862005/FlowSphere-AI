@@ -1,10 +1,10 @@
 'use client';
 
 import { motion, useScroll } from 'framer-motion';
+import { Menu, X, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
 
 const navLinks = [
   { label: 'Features', href: '/features' },

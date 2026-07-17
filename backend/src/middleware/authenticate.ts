@@ -1,10 +1,11 @@
+import type { JwtPayload, UserRole } from '@flowsphere/types';
 import type { Request, Response, NextFunction } from 'express';
 
 import { verifyAccessToken } from '../lib/jwt';
 import { prisma } from '../lib/prisma';
 import { cacheGet, cacheSet } from '../lib/redis';
+
 import { AppError } from './errorHandler';
-import type { JwtPayload, UserRole } from '@flowsphere/types';
 
 export interface AuthRequest extends Request {
   user?: {

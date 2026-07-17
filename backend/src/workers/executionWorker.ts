@@ -1,9 +1,9 @@
 import 'dotenv/config';
-import Bull from 'bull';
+import type Bull from 'bull';
 
+import { logger } from '../lib/logger';
 import { prisma } from '../lib/prisma';
 import { connectRedis } from '../lib/redis';
-import { logger } from '../lib/logger';
 import { getExecutionQueue } from '../queues/executionQueue';
 
 interface ExecutionJobData {
@@ -213,7 +213,7 @@ async function executeNode(
 
     case 'conditionNode': {
       const value = inputs.values().next().value;
-      return { result: Boolean(value), branch: Boolean(value) ? 'true' : 'false' };
+      return { result: Boolean(value), branch: value ? 'true' : 'false' };
     }
 
     case 'delayNode': {

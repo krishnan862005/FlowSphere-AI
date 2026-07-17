@@ -1,9 +1,9 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
 import { Check, Zap, Building2, Rocket } from 'lucide-react';
 import Link from 'next/link';
+import { useRef, useState } from 'react';
 
 const PLANS = [
   {

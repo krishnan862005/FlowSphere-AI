@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import type { User } from '@flowsphere/types';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 
 import { apiClient } from '@/lib/api';
 

@@ -1,8 +1,9 @@
-import { Server as HttpServer } from 'http';
+import type { Server as HttpServer } from 'http';
+
 import { Server as SocketIOServer } from 'socket.io';
 
-import { logger } from '../lib/logger';
 import { verifyAccessToken } from '../lib/jwt';
+import { logger } from '../lib/logger';
 
 let io: SocketIOServer | null = null;
 

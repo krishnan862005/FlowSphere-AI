@@ -1,13 +1,13 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Eye, EyeOff, Loader2, Github, Chrome, Check } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -63,7 +63,7 @@ export default function RegisterPage() {
         </div>
         <h1 className="text-3xl font-bold text-white mb-3">Check your email!</h1>
         <p className="text-muted-foreground mb-6">
-          We've sent a verification link to your email address. Click it to activate your account.
+          We&apos;ve sent a verification link to your email address. Click it to activate your account.
         </p>
         <Link href="/auth/login" className="btn-glow inline-block rounded-xl px-8 py-3 text-sm font-semibold text-white">
           Back to Sign In

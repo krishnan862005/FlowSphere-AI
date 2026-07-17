@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
-import { LandingHero } from '@/components/landing/LandingHero';
-import { LandingFeatures } from '@/components/landing/LandingFeatures';
-import { LandingWorkflowShowcase } from '@/components/landing/LandingWorkflowShowcase';
-import { LandingTestimonials } from '@/components/landing/LandingTestimonials';
-import { LandingPricing } from '@/components/landing/LandingPricing';
 import { LandingFAQ } from '@/components/landing/LandingFAQ';
+import { LandingFeatures } from '@/components/landing/LandingFeatures';
 import { LandingFooter } from '@/components/landing/LandingFooter';
+import { LandingHero } from '@/components/landing/LandingHero';
 import { LandingNav } from '@/components/landing/LandingNav';
+import { LandingPricing } from '@/components/landing/LandingPricing';
+import { LandingTestimonials } from '@/components/landing/LandingTestimonials';
+import { LandingWorkflowShowcase } from '@/components/landing/LandingWorkflowShowcase';
 
 export const metadata: Metadata = {
   title: 'FlowSphere AI — Design. Automate. Scale.',

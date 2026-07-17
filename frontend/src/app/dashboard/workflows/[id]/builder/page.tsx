@@ -22,15 +22,15 @@ import 'reactflow/dist/style.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useParams } from 'next/navigation';
 
-import { BuilderToolbar } from '@/components/builder/BuilderToolbar';
-import { NodePanel } from '@/components/builder/NodePanel';
-import { NodeConfigPanel } from '@/components/builder/NodeConfigPanel';
 import { AIAssistantPanel } from '@/components/builder/AIAssistantPanel';
+import { BuilderToolbar } from '@/components/builder/BuilderToolbar';
+import { NodeConfigPanel } from '@/components/builder/NodeConfigPanel';
+import { NodePanel } from '@/components/builder/NodePanel';
 import { TriggerSelectionOverlay } from '@/components/builder/TriggerSelectionOverlay';
 import { FlowNode } from '@/components/builder/nodes/FlowNode';
-import { useBuilderStore } from '@/stores/builderStore';
 import { apiClient } from '@/lib/api';
 import { NODE_DEFINITIONS } from '@/lib/nodeDefinitions';
+import { useBuilderStore } from '@/stores/builderStore';
 
 // Register custom node types
 const nodeTypes = {

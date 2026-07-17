@@ -2,10 +2,10 @@ import 'dotenv/config';
 import { createServer } from 'http';
 
 import { app } from './app';
-import { initializeSocketIO } from './socket/socketServer';
 import { logger } from './lib/logger';
-import { connectRedis } from './lib/redis';
 import { prisma } from './lib/prisma';
+import { connectRedis } from './lib/redis';
+import { initializeSocketIO } from './socket/socketServer';
 
 const PORT = process.env['PORT'] ?? 4000;
 

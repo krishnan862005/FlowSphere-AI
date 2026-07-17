@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
+import { motion } from 'framer-motion';
 import {
   GitBranch, Play, CheckCircle, XCircle, TrendingUp,
   Clock, ArrowRight, Zap, Activity, Plus,
@@ -12,8 +12,8 @@ import {
   ResponsiveContainer, BarChart, Bar,
 } from 'recharts';
 
-import { apiClient } from '@/lib/api';
 import { useAuth } from '@/contexts/AuthContext';
+import { apiClient } from '@/lib/api';
 
 // ─── Custom Recharts Tooltip ──────────────────────────────────────────────────
 
@@ -193,7 +193,7 @@ export default function DashboardPage() {
           <h1 className="text-2xl font-bold text-white">
             Good morning, {user?.name?.split(' ')[0]} 👋
           </h1>
-          <p className="text-muted-foreground mt-1">Here's what's happening with your automations today.</p>
+          <p className="text-muted-foreground mt-1">Here&apos;s what&apos;s happening with your automations today.</p>
         </div>
         <div className="flex items-center gap-3">
           <Link

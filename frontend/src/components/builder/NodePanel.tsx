@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { Search, ChevronDown, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Search, ChevronDown, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 
 import { NODE_DEFINITIONS, NODE_CATEGORIES } from '@/lib/nodeDefinitions';
 

@@ -1,23 +1,24 @@
-import { Router } from 'express';
 import { hash, compare } from 'bcryptjs';
-import { z } from 'zod';
-import speakeasy from 'speakeasy';
+import { Router } from 'express';
+import type { RequestHandler } from 'express';
+import { rateLimit } from 'express-rate-limit';
 import QRCode from 'qrcode';
+import speakeasy from 'speakeasy';
+import { z } from 'zod';
 
-import { prisma } from '../lib/prisma';
-import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../lib/jwt';
-import { generateSecureToken } from '../lib/encryption';
 import {
   sendVerificationEmail,
   sendPasswordResetEmail,
   sendMagicLinkEmail,
 } from '../lib/email';
+import { generateSecureToken } from '../lib/encryption';
+import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../lib/jwt';
+import { prisma } from '../lib/prisma';
 import { cacheSet, cacheGet, cacheDel } from '../lib/redis';
-import { AppError } from '../middleware/errorHandler';
 import { authenticate } from '../middleware/authenticate';
 import type { AuthRequest } from '../middleware/authenticate';
-import { rateLimit } from 'express-rate-limit';
-import type { RequestHandler } from 'express';
+import { AppError } from '../middleware/errorHandler';
+
 
 const router = Router();
 

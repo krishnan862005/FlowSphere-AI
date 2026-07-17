@@ -1,14 +1,14 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
 import {
   LayoutDashboard, GitBranch, Play, BarChart3, Settings,
   Puzzle, Key, Users, Shield, ChevronDown, ChevronRight,
   Zap, Bell, HelpCircle, LogOut, Plus, Search,
 } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 import { useAuth } from '@/contexts/AuthContext';
 

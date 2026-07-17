@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import type { RequestHandler } from 'express';
+
 import { authenticate } from '../middleware/authenticate';
 import type { AuthRequest } from '../middleware/authenticate';
-import type { RequestHandler } from 'express';
 
 const router = Router();
 router.use(authenticate as RequestHandler);

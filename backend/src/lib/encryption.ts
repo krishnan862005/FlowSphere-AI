@@ -1,4 +1,4 @@
-import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from 'crypto';
+import { createCipheriv, createDecipheriv, randomBytes, scryptSync, createHash } from 'crypto';
 
 const ENCRYPTION_KEY = process.env['ENCRYPTION_KEY'] ?? 'fallback-32-char-key-for-dev-only';
 const ALGORITHM = 'aes-256-gcm';
@@ -30,7 +30,6 @@ export function decrypt(encryptedText: string): string {
 }
 
 export function hashString(input: string): string {
-  const { createHash } = require('crypto') as typeof import('crypto');
   return createHash('sha256').update(input).digest('hex');
 }
 

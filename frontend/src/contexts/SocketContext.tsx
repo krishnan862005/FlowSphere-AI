@@ -1,10 +1,10 @@
 'use client';
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { io, Socket } from 'socket.io-client';
+import type { Socket } from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 import { useAuth } from './AuthContext';
-import type { WsServerToClient } from '@flowsphere/types';
 
 interface SocketContextValue {
   socket: Socket | null;

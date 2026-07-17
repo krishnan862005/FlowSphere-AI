@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { Puzzle, Search, Check, Sparkles, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
 
 const INTEGRATIONS = [
   { id: 'slack', name: 'Slack', description: 'Send messages, alerts, and channel notifications', category: 'Messaging', icon: '💬', connected: true },

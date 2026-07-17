@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { LandingPricing } from '@/components/landing/LandingPricing';
+
 import { LandingFooter } from '@/components/landing/LandingFooter';
 import { LandingNav } from '@/components/landing/LandingNav';
+import { LandingPricing } from '@/components/landing/LandingPricing';
 
 export const metadata: Metadata = {
   title: 'Pricing — FlowSphere AI',

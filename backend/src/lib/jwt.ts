@@ -1,6 +1,6 @@
+import type { JwtPayload } from '@flowsphere/types';
 import jwt from 'jsonwebtoken';
 
-import type { JwtPayload } from '@flowsphere/types';
 
 const ACCESS_SECRET = process.env['JWT_SECRET'] ?? 'fallback-dev-secret';
 const REFRESH_SECRET = process.env['JWT_REFRESH_SECRET'] ?? 'fallback-refresh-secret';

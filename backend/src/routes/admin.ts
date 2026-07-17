@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { authenticate, requireRole } from '../middleware/authenticate';
-import { prisma } from '../lib/prisma';
-import type { AuthRequest } from '../middleware/authenticate';
 import type { RequestHandler } from 'express';
+
+import { prisma } from '../lib/prisma';
+import { authenticate, requireRole } from '../middleware/authenticate';
+import type { AuthRequest } from '../middleware/authenticate';
+
 
 const router = Router();
 router.use(authenticate as RequestHandler, requireRole('SUPER_ADMIN', 'ADMIN') as RequestHandler);

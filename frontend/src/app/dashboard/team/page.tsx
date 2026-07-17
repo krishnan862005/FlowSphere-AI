@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { Users, Plus, Mail, Shield, Check, Trash2 } from 'lucide-react';
+import { useState } from 'react';
 
 interface Member {
   id: string;

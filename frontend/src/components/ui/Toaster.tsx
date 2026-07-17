@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, createContext, useContext, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, AlertTriangle, Info, X } from 'lucide-react';
+import { useState, useEffect, createContext, useContext, useCallback } from 'react';
 
 interface Toast {
   id: string;

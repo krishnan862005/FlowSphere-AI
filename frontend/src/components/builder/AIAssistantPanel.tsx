@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import type { CanvasData } from '@flowsphere/types';
 import { motion } from 'framer-motion';
 import { X, Send, Bot, Loader2, Sparkles, Zap, FileText, AlertTriangle, Lightbulb } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 
 import { apiClient } from '@/lib/api';
-import type { CanvasData } from '@flowsphere/types';
+
 
 interface Message {
   role: 'user' | 'assistant';
