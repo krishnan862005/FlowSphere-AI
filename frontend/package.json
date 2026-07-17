@@ -5,7 +5,7 @@
   "description": "FlowSphere AI — Next.js 15 Frontend",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "turbo run build --force",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
