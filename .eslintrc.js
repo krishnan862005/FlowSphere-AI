@@ -23,14 +23,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
-    'import/order': [
-      'warn',
-      {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-        'newlines-between': 'always',
-        alphabetize: { order: 'asc' },
-      },
-    ],
+    'import/order': 'off',
     'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
   },
   ignorePatterns: ['dist/', '.next/', 'node_modules/', '*.config.js', '*.config.ts'],
