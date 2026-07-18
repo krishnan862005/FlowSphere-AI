@@ -1,6 +1,6 @@
 import { Zap } from 'lucide-react';
-import type { Metadata } from 'next';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Sign In | FlowSphere AI',
