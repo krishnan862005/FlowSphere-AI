@@ -445,7 +445,7 @@ function getMockModel(modelName: string) {
       
       const mapping = relationMap[relation];
       if (!mapping) {
-        result[relation] = mapping?.type === 'many' ? [] : null;
+        result[relation] = null;
         continue;
       }
       
@@ -533,7 +533,7 @@ function getMockModel(modelName: string) {
       }
       if (args?.orderBy) {
         // Basic sorting support
-        const key = Object.keys(args.orderBy)[0];
+        const key = Object.keys(args.orderBy)[0] as string;
         const dir = args.orderBy[key];
         list = [...list].sort((a: any, b: any) => {
           if (dir === 'desc') return (b[key] > a[key] ? 1 : -1);

@@ -4,7 +4,7 @@ import { logger } from '../lib/logger';
 
 export class AppError extends Error {
   constructor(
-    public message: string,
+    message: string,
     public statusCode: number = 500,
     public code: string = 'INTERNAL_ERROR',
     public details?: Record<string, string[]>
@@ -38,7 +38,7 @@ export function errorHandler(
 
   // Prisma errors
   if (err.constructor.name === 'PrismaClientKnownRequestError') {
-    const prismaError = err as { code: string; meta?: { target?: string[] } };
+    const prismaError = err as unknown as { code: string; meta?: { target?: string[] } };
     if (prismaError.code === 'P2002') {
       const field = prismaError.meta?.target?.[0] ?? 'field';
       res.status(409).json({

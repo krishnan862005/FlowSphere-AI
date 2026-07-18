@@ -33,7 +33,7 @@ router.post('/', async (req: AuthRequest, res, next) => {
 
     const apiKey = await prisma.apiKey.create({
       data: {
-        organizationId: req.user!.orgId,
+        organizationId: req.user!.orgId as string,
         userId: req.user!.id,
         name,
         keyHash: hash,
@@ -49,9 +49,9 @@ router.post('/', async (req: AuthRequest, res, next) => {
 
 router.delete('/:id', async (req: AuthRequest, res, next) => {
   try {
-    const key = await prisma.apiKey.findUnique({ where: { id: req.params['id'] } });
+    const key = await prisma.apiKey.findUnique({ where: { id: req.params['id'] as string } });
     if (!key || key.organizationId !== req.user!.orgId) throw new AppError('Not found', 404, 'NOT_FOUND');
-    await prisma.apiKey.update({ where: { id: req.params['id'] }, data: { isActive: false } });
+    await prisma.apiKey.update({ where: { id: req.params['id'] as string }, data: { isActive: false } });
     res.json({ success: true });
   } catch (err) { next(err); }
 });

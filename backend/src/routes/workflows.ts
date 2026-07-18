@@ -240,10 +240,10 @@ router.post('/', async (req: AuthRequest, res, next) => {
 
     const workflow = await prisma.workflow.create({
       data: {
-        ...data,
+        ...(data as any),
         organizationId: orgId,
         createdById: req.user!.id,
-        canvasData: data.canvasData ?? { nodes: [], edges: [] },
+        canvasData: (data.canvasData ?? { nodes: [], edges: [] }) as any,
       },
     });
 
@@ -313,7 +313,7 @@ router.get('/templates/itops', async (req: AuthRequest, res, next) => {
 router.get('/:id', async (req: AuthRequest, res, next) => {
   try {
     const workflow = await prisma.workflow.findUnique({
-      where: { id: req.params['id'], deletedAt: null },
+      where: { id: req.params['id'] as string, deletedAt: null },
       include: {
         createdBy: { select: { id: true, name: true, avatarUrl: true } },
         nodes: true,
@@ -343,7 +343,7 @@ router.get('/:id', async (req: AuthRequest, res, next) => {
 router.patch('/:id', async (req: AuthRequest, res, next) => {
   try {
     const data = updateWorkflowSchema.parse(req.body);
-    const existing = await prisma.workflow.findUnique({ where: { id: req.params['id'] } });
+    const existing = await prisma.workflow.findUnique({ where: { id: req.params['id'] as string } });
     if (!existing) throw new AppError('Workflow not found', 404, 'NOT_FOUND');
     if (existing.organizationId !== req.user!.orgId) throw new AppError('Access denied', 403, 'FORBIDDEN');
 
@@ -362,8 +362,8 @@ router.patch('/:id', async (req: AuthRequest, res, next) => {
     }
 
     const updated = await prisma.workflow.update({
-      where: { id: req.params['id'] },
-      data: { ...data, version: newVersion },
+      where: { id: req.params['id'] as string },
+      data: { ...(data as any), version: newVersion },
     });
 
     res.json({ success: true, data: updated });
@@ -376,17 +376,17 @@ router.patch('/:id', async (req: AuthRequest, res, next) => {
 
 router.delete('/:id', async (req: AuthRequest, res, next) => {
   try {
-    const existing = await prisma.workflow.findUnique({ where: { id: req.params['id'] } });
+    const existing = await prisma.workflow.findUnique({ where: { id: req.params['id'] as string } });
     if (!existing) throw new AppError('Workflow not found', 404, 'NOT_FOUND');
     if (existing.organizationId !== req.user!.orgId) throw new AppError('Access denied', 403, 'FORBIDDEN');
 
     await prisma.workflow.update({
-      where: { id: req.params['id'] },
+      where: { id: req.params['id'] as string },
       data: { deletedAt: new Date() },
     });
 
     await prisma.auditLog.create({
-      data: { userId: req.user!.id, organizationId: req.user!.orgId, action: 'workflow.delete', resourceType: 'Workflow', resourceId: req.params['id'] },
+      data: { userId: req.user!.id, organizationId: req.user!.orgId, action: 'workflow.delete', resourceType: 'Workflow', resourceId: req.params['id'] as string },
     });
 
     res.json({ success: true, data: { message: 'Workflow deleted.' } });
@@ -399,7 +399,7 @@ router.delete('/:id', async (req: AuthRequest, res, next) => {
 
 router.post('/:id/execute', async (req: AuthRequest, res, next) => {
   try {
-    const workflow = await prisma.workflow.findUnique({ where: { id: req.params['id'] } });
+    const workflow = await prisma.workflow.findUnique({ where: { id: req.params['id'] as string } });
     if (!workflow) throw new AppError('Workflow not found', 404, 'NOT_FOUND');
     if (workflow.organizationId !== req.user!.orgId) throw new AppError('Access denied', 403, 'FORBIDDEN');
 
@@ -429,12 +429,12 @@ router.post('/:id/execute', async (req: AuthRequest, res, next) => {
 
 router.get('/:id/versions', async (req: AuthRequest, res, next) => {
   try {
-    const workflow = await prisma.workflow.findUnique({ where: { id: req.params['id'] } });
+    const workflow = await prisma.workflow.findUnique({ where: { id: req.params['id'] as string } });
     if (!workflow) throw new AppError('Workflow not found', 404, 'NOT_FOUND');
     if (workflow.organizationId !== req.user!.orgId) throw new AppError('Access denied', 403, 'FORBIDDEN');
 
     const versions = await prisma.workflowVersion.findMany({
-      where: { workflowId: req.params['id'] },
+      where: { workflowId: req.params['id'] as string },
       orderBy: { version: 'desc' },
       take: 50,
     });

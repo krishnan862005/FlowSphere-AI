@@ -50,7 +50,7 @@ router.get('/', async (req: AuthRequest, res, next) => {
 router.get('/:id', async (req: AuthRequest, res, next) => {
   try {
     const execution = await prisma.execution.findUnique({
-      where: { id: req.params['id'] },
+      where: { id: req.params['id'] as string },
       include: {
         workflow: { select: { id: true, name: true, organizationId: true } },
         nodeExecutions: { orderBy: { startedAt: 'asc' } },
@@ -71,7 +71,7 @@ router.get('/:id', async (req: AuthRequest, res, next) => {
 router.delete('/:id', async (req: AuthRequest, res, next) => {
   try {
     const execution = await prisma.execution.findUnique({
-      where: { id: req.params['id'] },
+      where: { id: req.params['id'] as string },
       include: { workflow: { select: { organizationId: true } } },
     });
 
@@ -83,7 +83,7 @@ router.delete('/:id', async (req: AuthRequest, res, next) => {
     }
 
     await prisma.execution.update({
-      where: { id: req.params['id'] },
+      where: { id: req.params['id'] as string },
       data: { status: 'CANCELLED', completedAt: new Date() },
     });
 

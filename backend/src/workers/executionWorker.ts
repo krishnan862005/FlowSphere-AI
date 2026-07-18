@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import type Bull from 'bull';
+import type * as Bull from 'bull';
 
 import { logger } from '../lib/logger';
 import { prisma } from '../lib/prisma';
@@ -288,7 +288,7 @@ async function executeNode(
         const errorText = await res.text();
         throw new Error(`OpenAI API Error: ${res.status} - ${errorText}`);
       }
-      const result = await res.json();
+      const result = (await res.json()) as any;
       return { response: result.choices?.[0]?.message?.content, raw: result };
     }
 

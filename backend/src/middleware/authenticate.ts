@@ -1,4 +1,4 @@
-import type { JwtPayload, UserRole } from '@flowsphere/types';
+import type { UserRole } from '@flowsphere/types';
 import type { Request, Response, NextFunction } from 'express';
 
 import { verifyAccessToken } from '../lib/jwt';
@@ -7,14 +7,21 @@ import { cacheGet, cacheSet } from '../lib/redis';
 
 import { AppError } from './errorHandler';
 
-export interface AuthRequest extends Request {
-  user?: {
-    id: string;
-    email: string;
-    role: UserRole;
-    orgId?: string;
-  };
+/* eslint-disable @typescript-eslint/no-namespace */
+declare global {
+  namespace Express {
+    interface Request {
+      user?: {
+        id: string;
+        email: string;
+        role: UserRole;
+        orgId?: string;
+      };
+    }
+  }
 }
+
+export type AuthRequest = Request;
 
 export function authenticate(req: AuthRequest, _res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;

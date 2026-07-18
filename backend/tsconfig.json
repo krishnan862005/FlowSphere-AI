@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES2022",
     "module": "CommonJS",
@@ -7,7 +7,12 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "allowImportingTsExtensions": false,
-    "declaration": true,
+    "declaration": false,
+    "declarationMap": false,
+    "skipLibCheck": true,
+    "exactOptionalPropertyTypes": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@flowsphere/types": ["../../packages/types/src"],
       "@flowsphere/utils": ["../../packages/utils/src"]

@@ -91,7 +91,7 @@ router.get('/me/notifications', async (req: AuthRequest, res, next) => {
 router.patch('/me/notifications/:id/read', async (req: AuthRequest, res, next) => {
   try {
     await prisma.notification.update({
-      where: { id: req.params['id'], userId: req.user!.id },
+      where: { id: req.params['id'] as string, userId: req.user!.id },
       data: { readAt: new Date() },
     });
     res.json({ success: true });
